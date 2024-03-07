@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "488171890330",
+    "project_id": "agriloan-de888",
+    "storage_bucket": "agriloan-de888.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488171890330:android:a830140152101d36d72123",
+        "android_client_info": {
+          "package_name": "com.example.loans"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3sAAoSZwz2HwkiF0GLuqtymjkeFDqoY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
