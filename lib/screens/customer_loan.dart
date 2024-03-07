@@ -12,14 +12,14 @@ class CustomersScreen extends StatefulWidget {
 }
 
 class _CustomersScreenState extends State<CustomersScreen> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   void _search(String value) {
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    //Size size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -37,11 +37,6 @@ class _CustomersScreenState extends State<CustomersScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          leading: Container(
-            height: 58,
-            width: 58,
-            child: const Icon(Icons.chevron_left),
-          ),
           title: TextField(controller: _controller, onChanged: _search),
           backgroundColor: Colors.transparent,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -101,66 +96,66 @@ class _CustomersScreenState extends State<CustomersScreen> {
             }
 
             return ListView.builder(
-                shrinkWrap: true,
-                itemCount: filteredList.length,
-                itemBuilder: (context, index) {
-                  final customerLoan = filteredList[index];
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              CustomerLoanDetailsScreen(customer: customerLoan),
+              shrinkWrap: true,
+              itemCount: filteredList.length,
+              itemBuilder: (context, index) {
+                final customerLoan = filteredList[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            CustomerLoanDetailsScreen(customer: customerLoan),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.only(top: 16, right: 16, left: 16),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5),
+                      boxShadow: const [
+                        BoxShadow(
+                          offset: Offset(0, 0.1),
+                          blurRadius: 0.2,
+                          color: Color.fromARGB(255, 207, 207, 207),
+                          spreadRadius: 1,
                         ),
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      margin:
-                          const EdgeInsets.only(top: 16, right: 16, left: 16),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: const [
-                          BoxShadow(
-                            offset: Offset(0, 0.1),
-                            blurRadius: 0.2,
-                            color: Color.fromARGB(255, 207, 207, 207),
-                            spreadRadius: 1,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${customerLoan['customer']['name']}",
-                                style: const TextStyle(
-                                  color: Color.fromARGB(255, 27, 27, 27),
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                "${customerLoan['loans'].length} active loans",
-                                style: const TextStyle(color: Colors.grey),
-                              ),
-                            ],
-                          ),
-                          const Icon(
-                            FontAwesomeIcons.chevronRight,
-                            color: Colors.grey,
-                          ),
-                        ],
-                      ),
+                      ],
                     ),
-                  );
-                });
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${customerLoan['customer']['name']}",
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 27, 27, 27),
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              "${customerLoan['loans'].length} active loans",
+                              style: const TextStyle(color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                        const Icon(
+                          FontAwesomeIcons.chevronRight,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
           },
         ),
       ),

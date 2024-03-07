@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loans/screens/home.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:loans/screens/sign_in.dart';
 
 import 'firebase_options.dart';
 
@@ -10,7 +11,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,11 +27,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
         textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
       ),
-      home: const HomeScreen(),
+      home: const SignInScreen(),
     );
   }
 }
